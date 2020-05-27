@@ -23,9 +23,4 @@ jobs:
         dotnet-version: '3.1.300'
     - name: Build Application
       # デプロイするProjectを指定 (今回は"HelloBlazorWasm")
-      run: dotnet publish -c Release ./HelloBlazorWasm/HelloBlazorWasm.csproj
-
-    - name: rm
-      run: rm -rf ./docs
-    - name: Deploy
-      run: mv ./HelloBlazorWasm/bin/Release/netstandard2.1/publish/wwwroot ./docs
+      run: dotnet publish -o ./docs -c Release ./HelloBlazorWasm/HelloBlazorWasm.csproj
