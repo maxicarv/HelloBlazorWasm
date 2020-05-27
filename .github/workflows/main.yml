@@ -25,9 +25,7 @@ jobs:
       # デプロイするProjectを指定 (今回は"HelloBlazorWasm")
       run: dotnet publish -c Release ./HelloBlazorWasm/HelloBlazorWasm.csproj
 
+    - name: rm
+      run: rm -rf ./docs
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-           # publishコマンドで出力されたファイルをgh-pagesブランチにpush
-           publish_dir: ./HelloBlazorWasm/bin/Release/netstandard2.1/publish/wwwroot/
+      run: mv ./HelloBlazorWasm/bin/Release/netstandard2.1/publish/wwwroot ./docs
